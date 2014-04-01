@@ -9,7 +9,11 @@ namespace BrowserifyTest.Models
         public static IHtmlString Bundle(this HtmlHelper helper, string bundleName)
         {
             const string tag = "<script type=\"text/javascript\" src=\"{0}\"></script>";
+#if DEBUG
             var folder = "build";
+#else
+            var folder = "dist";
+#endif
 
 
             var urlHelper = new UrlHelper(helper.ViewContext.RequestContext);
